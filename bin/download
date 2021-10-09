@@ -10,7 +10,14 @@ source "${plugin_dir}/lib/utils.bash"
 
 mkdir -p "$ASDF_DOWNLOAD_PATH"
 
-release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME"
+release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME-$ASDF_INSTALL_VERSION"
 
 # Download tar.gz file to the download directory
 download_release "$ASDF_INSTALL_VERSION" "$release_file"
+
+# Move to bin for asdf to pick it up.
+mkdir -p "$ASDF_DOWNLOAD_PATH/bin"
+cp -f "$release_file" "$ASDF_DOWNLOAD_PATH/bin/$TOOL_NAME"
+
+# Remove original bin.
+rm $release_file
