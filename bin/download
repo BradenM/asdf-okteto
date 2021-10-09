@@ -20,4 +20,4 @@ mkdir -p "$ASDF_DOWNLOAD_PATH/bin"
 cp -f "$release_file" "$ASDF_DOWNLOAD_PATH/bin/$TOOL_NAME"
 
 # Remove original bin.
-rm $release_file
+rm "$release_file"
